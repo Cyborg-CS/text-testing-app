@@ -4,7 +4,8 @@ import { useState } from 'react';
 export default function TextArea() {
   
   const [text, setText] = useState("");
-  
+  const [btnName, setBtnName] = useState('Reverse Text');
+
   function updateText(event){
     let userText = event.target.value
     setText(userText)
@@ -26,11 +27,32 @@ export default function TextArea() {
    };
 
    const reverseText =()=>{
+    if(btnName === 'Reverse Text'){
     let newText = text.split(" ").map((currentWord)=>{
       let reverseWord = currentWord.split('').reverse().join('');
       return reverseWord
     })
     setText(newText.join(" "));
+    setBtnName('Forward Text');
+  }else{
+    let newText = text.split(" ").map((currentWord)=>{
+      let reverseWord = currentWord.split('').reverse().join('');
+      return reverseWord
+    })
+    setText(newText.join(" "));
+    setBtnName('Reverse Text')
+  };
+   };
+
+   const copyText = ()=>{
+    let text = document.getElementById('exampleFormControlTextarea1');
+    text.select();
+    navigator.clipboard.writeText(text.value);
+   }
+
+   const clearExtraSpaces=()=>{
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(' '))
    };
 
   return (
@@ -42,13 +64,15 @@ export default function TextArea() {
 </div>
 <button className='btn btn-primary'onClick={turnUpText}>Turn To Uppercase</button>
 <button className='btn btn-primary mx-2'onClick={turnLowText}>Turn To Lowercase</button>
-<button className='btn btn-primary mx-0.5'onClick={reverseText}>Reverse Text</button>
-<button className='btn btn-primary mx-2'onClick={clearText}>Clear</button>
+<button className='btn btn-primary mx-0.5'onClick={reverseText}>{btnName}</button>
+<button className='btn btn-primary mx-2'onClick={copyText}>Copy Text</button>
+<button className='btn btn-primary mx-0.5'onClick={clearText}>Clear</button>
+<button className='btn btn-primary mx-2 my-2'onClick={clearExtraSpaces}>Remove Extra Spaces</button>
     </div>
     <div className='container my-3'>
       <h2>Text Summary</h2>
       <p>Your text has {text.split(" ").length} words and {text.split('').length} characters</p>
-      <p>{0.008 * text.split(' ').length} minutes to read</p>
+      <p>{0.008 * text.split(' ').length.toFixed(3)} minutes to read</p>
       <h2>Preview</h2>
       <p>{text}</p>
     </div>

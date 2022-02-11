@@ -1,4 +1,4 @@
-
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import TextArea from './components/TextArea';
 import './App.css';
@@ -10,7 +10,8 @@ export default function App() {
       <Navbar title="TextLab" linkOne="Home" linkTwo="About"></Navbar>   
     </div>
     <div>
-      <TextArea></TextArea>
+      {/* <About/> */}
+      <TextArea/>
     </div>
     </>
   );
