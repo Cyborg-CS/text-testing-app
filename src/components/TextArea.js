@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function TextArea() {
+export default function TextArea(props) {
   
   const [text, setText] = useState("");
   const [btnName, setBtnName] = useState('Reverse Text');
@@ -48,6 +48,7 @@ export default function TextArea() {
     let text = document.getElementById('exampleFormControlTextarea1');
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert(" Copied to Clipboard");
    }
 
    const clearExtraSpaces=()=>{
@@ -57,10 +58,12 @@ export default function TextArea() {
 
   return (
     <div>
-    <div className="container">
+    <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
 <div className= "my-3">
   <h1>Enter Your Text Here</h1>
-  <textarea className="form-control" onChange={updateText} value={text} id="exampleFormControlTextarea1" rows="10"></textarea>
+  <textarea className="form-control" onChange={updateText} value={text} id="exampleFormControlTextarea1" rows="10"
+  style={{backgroundColor: props.mode==='dark'?'black':'white',
+  color: props.mode==='dark'?'white':'black'}}></textarea>
 </div>
 <button className='btn btn-primary'onClick={turnUpText}>Turn To Uppercase</button>
 <button className='btn btn-primary mx-2'onClick={turnLowText}>Turn To Lowercase</button>
@@ -69,7 +72,7 @@ export default function TextArea() {
 <button className='btn btn-primary mx-0.5'onClick={clearText}>Clear</button>
 <button className='btn btn-primary mx-2 my-2'onClick={clearExtraSpaces}>Remove Extra Spaces</button>
     </div>
-    <div className='container my-3'>
+    <div className='container my-3' style={{color: props.mode==='dark'?'white':'black'}}>
       <h2>Text Summary</h2>
       <p>Your text has {text.split(" ").length} words and {text.split('').length} characters</p>
       <p>{0.008 * text.split(' ').length.toFixed(3)} minutes to read</p>
