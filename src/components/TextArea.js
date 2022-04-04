@@ -7,6 +7,7 @@ export default function TextArea(props) {
   const [reverseBtnName, setReverseBtnName] = useState('Reverse Text');
   const [textSize, setTextSize] = useState('normal');
   // const [boldBtnName, setBoldBtnName] = useState('Bold');
+  const [textStyle, setTextStyle] = useState('normal');
 
   function updateText(event){
     let userText = event.target.value
@@ -69,6 +70,14 @@ export default function TextArea(props) {
     }
    };
 
+  const makeTextItalic = ()=>{
+    if(textStyle === 'normal'){
+      setTextStyle('italic');
+    }else{
+     setTextStyle('normal');
+    }
+  }
+
   return (
     <div>
     <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
@@ -76,13 +85,14 @@ export default function TextArea(props) {
   <h1>Enter Your Text Here</h1>
   <textarea className="form-control" onChange={updateText} value={text} id="exampleFormControlTextarea1" rows="10"
   style={{backgroundColor: props.mode==='dark'?'black':'white',
-  color: props.mode==='dark'?'white':'black', fontWeight:textSize}}></textarea>
+  color: props.mode==='dark'?'white':'black', fontWeight:textSize, fontStyle:textStyle}}></textarea>
 </div>
 <button className='btn btn-primary'onClick={turnUpText}>Turn To Uppercase</button>
 <button className='btn btn-primary mx-2 my-2'onClick={turnLowText}>Turn To Lowercase</button>
 <button className='btn btn-primary mx-0.5 my-2'onClick={reverseText}>{reverseBtnName}</button>
 <button className='btn btn-primary mx-2 my-2'onClick={copyText}>Copy Text</button>
 <button className='btn btn-primary mx-2 my-2'onClick={makeTextBold}>Bold</button>
+<button className='btn btn-primary mx-2 my-2'onClick={makeTextItalic}>Italic</button>
 <button className='btn btn-primary mx-0.5 my-2'onClick={clearText}>Clear</button>
 <button className='btn btn-primary mx-2 my-2'onClick={clearExtraSpaces}>Remove Extra Spaces</button>
     </div>
