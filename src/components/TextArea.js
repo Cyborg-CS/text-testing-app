@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 export default function TextArea(props) {
   
+  document.title = 'TextLab | home';
   const [text, setText] = useState("");
   const [reverseBtnName, setReverseBtnName] = useState('Reverse Text');
   const [textSize, setTextSize] = useState('normal');

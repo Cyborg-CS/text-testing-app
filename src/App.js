@@ -4,6 +4,13 @@ import Navbar from './components/Navbar';
 import TextArea from './components/TextArea';
 import './App.css';
 import Alerts from './components/Alerts';
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default function App() {
   
@@ -21,25 +28,34 @@ export default function App() {
     if(mode=== 'light'){
       setMode('dark')
       document.body.style.backgroundColor = 'black';
-      takeAlert(" Dark Mode Enabled.")
+      takeAlert(" Dark Mode Enabled.");
+      document.title ="TextLab | home (Dark)";
     }else{
       setMode('light')
       document.body.style.backgroundColor = 'white';
       takeAlert(" Dark Mode Disabled.");
+      document.title ="TextLab | home";
+
     }
   }
 
   return (
+    <Router>
     <>
     <div className="App">
       <Navbar toggleMode={toggleDarkMode} mode={mode} title="TextLab" linkOne="Home" linkTwo="About"></Navbar>   
     </div>
     <div><Alerts alert ={alert}/></div>
     <div>
-      {/* <About/> */}
-      <TextArea mode={mode} showAlert ={takeAlert}/>
+    <Routes>
+    <Route exact path="/about" element={<About mode={mode}/>} />
+    <Route path="/" element={<TextArea exact mode={mode} showAlert ={takeAlert}/>}/>
+          
+    </Routes>      
     </div>
     </>
+   </Router>
+
   );
 }
 
