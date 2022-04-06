@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/text-testing-app/static/css/main.e6c13ad2.css",
+    "main.js": "/text-testing-app/static/js/main.b1b0ccce.js",
+    "static/js/787.169fa30c.chunk.js": "/text-testing-app/static/js/787.169fa30c.chunk.js",
+    "index.html": "/text-testing-app/index.html",
+    "main.e6c13ad2.css.map": "/text-testing-app/static/css/main.e6c13ad2.css.map",
+    "main.b1b0ccce.js.map": "/text-testing-app/static/js/main.b1b0ccce.js.map",
+    "787.169fa30c.chunk.js.map": "/text-testing-app/static/js/787.169fa30c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.b1b0ccce.js"
+  ]
+}
