@@ -49,12 +49,11 @@ export default function App() {
     <div>
     <Routes>
     <Route exact path="/about" element={<About mode={mode}/>} />
-    <Route path="/" element={<TextArea exact mode={mode} showAlert ={takeAlert}/>}/>
-          
+    <Route exact path="/" element={<TextArea exact mode={mode} showAlert ={takeAlert}/>}/>
     </Routes>      
     </div>
     </>
-   </Router>
+  </Router>
 
   );
 }

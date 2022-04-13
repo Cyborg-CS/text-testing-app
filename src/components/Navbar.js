@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 export default function Navbar(props) {
   
@@ -19,14 +20,14 @@ export default function Navbar(props) {
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">{props.linkOne}</Link>
               </li>
-              <li className="nav-item">
+               <li className="nav-item">
                 <Link className="nav-link" to="/about">{props.linkTwo}</Link>
-              </li>
+               </li> 
             </ul>
-            <form className="d-flex">
+             {/* <form className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
               <button className={`btn btn-outline-${props.mode==='dark'?'primary':'primary'}`} type="submit">Search</button>
-            </form>
+             </form> */}
           </div>
         </div>
         <div className={`form-check form-switch text-${props.mode==='dark'?'white':'black'} mx-2`} >
