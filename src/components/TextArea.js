@@ -49,9 +49,7 @@ export default function TextArea(props) {
    };
 
    const copyText = ()=>{
-    let text = document.getElementById('exampleFormControlTextarea1');
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert(" Copied to Clipboard");
    }
 
@@ -99,7 +97,7 @@ export default function TextArea(props) {
     </div>
     <div className='container my-3' style={{color: props.mode==='dark'?'white':'black'}}>
       <h2>Text Summary</h2>
-      <p>Your text has {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.split('').length} characters</p>
+      <p>Your text has {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.split('').filter((item)=>{return item!==' '}).length} characters</p>
       <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length.toFixed(3)} minutes to read</p>
       <h2>Preview</h2>
       <p>{text}</p>
